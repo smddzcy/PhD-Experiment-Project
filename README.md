@@ -1,14 +1,3 @@
-# Grunt boilerplate
+# Movie Project
 
-Grunt boilerplate project.
-
-Includes;
-* concat
-* uglify
-* jshint
-* autoprefixer
-* less
-* watch
-* clean
-* coffee
-* cssmin
+A weird project for a cognitive science experiment.
