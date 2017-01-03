@@ -1,0 +1,64 @@
+@darkestColor: rgb(18, 18, 18);
+@darkColor: rgb(32, 32, 32);
+@lightBlueColor: rgb(129, 162, 213);
+@blueColor: rgb(36, 115, 208);
+.text-big {
+    font-size: 3rem;
+}
+.text-center {
+    text-align: center;
+}
+.text-monospace {
+    font-family: monospace;
+}
+.header {
+    .text-big;
+    .text-center;
+    color: @darkColor;
+}
+#flexLibrary {
+    .flexbox() {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+    }
+    .flex(@values:auto) {
+        -webkit-box-flex: @values;
+        -moz-box-flex: @values;
+        -webkit-flex: @values;
+        -ms-flex: @values;
+        flex: @values;
+    }
+    .order(@val) {
+        -webkit-box-ordinal-group: @val;
+        -moz-box-ordinal-group: @val;
+        -ms-flex-order: @val;
+        -webkit-order: @val;
+        order: @val;
+    }
+}
+// container
+.flex {
+    #flexLibrary.flexbox();
+    justify-content: center; // how flex items are aligned on main axis, horizontal for row flexes
+    align-items: center; // how flex items are aligned on cross axis, vertical for row flexes
+    flex-wrap: wrap;
+}
+.flex-inline {
+    display: inline-flex;
+}
+.flex-row:extend(.flex){
+    flex-direction: row;
+}
+.flex-col:extend(.flex){
+    flex-direction: column;
+}
+// Note that float, clear and vertical-align have no effect on a flex item.
+.flex-item {
+    #flexLibrary.flex();
+    // order: <Integer>; // order of appearence on flex container
+    // flex: 0 1 auto; // grow, shrink, and basis
+    // align-self: auto; // overrides align-items prop. of flex container
+}
