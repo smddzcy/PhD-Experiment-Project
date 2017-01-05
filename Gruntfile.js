@@ -64,6 +64,9 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'dist/main.css': 'dist/main.css'
+                },
+                options: {
+                  browsers: ['last 3 versions']
                 }
             }
         },
@@ -76,9 +79,24 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            all: {
-                files: ['<%= jshint.files %>'],
-                tasks: ['jshint']
+            coffee: {
+              files: ['<%= coffee.dist.src %>'],
+              tasks: ['coffee', 'concat:js', 'uglify', 'clean:build']
+            },
+            less: {
+              files: ['<%= less.dist.src %>'],
+              tasks: ['less', 'concat:css', 'autoprefixer', 'cssmin', 'clean:build']
+            },
+            html: {
+              files: ['src/**/*.html'],
+              tasks: ['clean:html', 'copy:html']
+            },
+            img: {
+              files: ['src/assets/img/**/*'],
+              tasks: ['copy:img']
+            },
+            options: {
+              livereload: true
             }
         },
 
@@ -88,7 +106,23 @@ module.exports = function(grunt) {
             },
             build: {
                 src: ["dist/**/*.coffee.js", "dist/**/*.less.css", "!dist/**/*.min.js", "!dist/**/*.min.css", ]
+            },
+            html: {
+              src: ["dist/**/*.html"]
             }
+        },
+
+        copy: {
+          html: {
+            files: [
+              {expand: true, cwd: 'src/', src: ['**/*.html'], dest: 'dist/', filter: 'isFile'}
+            ]
+          },
+          img: {
+            files: [
+              {expand: true, cwd: 'src/assets/', src: ['img/**/*'], dest: 'dist'}
+            ]
+          }
         }
     });
 
@@ -101,9 +135,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.loadNpmTasks('grunt-serve');
 
-    grunt.registerTask('default', ['jshint', 'clean:all', 'coffee', 'less', 'concat', 'autoprefixer', 'uglify', 'cssmin', 'clean:build']);
+    grunt.registerTask('build', ['clean:all', 'coffee', 'less',
+      'concat', 'autoprefixer', 'uglify', 'cssmin', 'copy', 'clean:build']);
+
+    grunt.registerTask('default', ['build', 'watch']);
 
 };

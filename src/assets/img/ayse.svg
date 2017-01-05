@@ -1,0 +1,26 @@
+<svg viewBox="0 0 2000 1500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Ayse</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ayse">
+            <g id="Head" transform="translate(326.000000, 749.114191) rotate(-90.000000) translate(-326.000000, -749.114191) translate(123.500000, 423.114191)">
+                <polygon id="Head-Triangle" fill="#D8D8D8" transform="translate(202.116461, 325.793163) scale(1, -1) translate(-202.116461, -325.793163) " points="202.116461 2.50638148e-13 404.232921 651.586326 0 651.586326"></polygon>
+                <ellipse id="Eye-Left" fill="#22C1FF" cx="121.97552" cy="92.5091697" rx="44.3547345" ry="58.9913546"></ellipse>
+                <ellipse id="Eye-Right" fill="#22C1FF" cx="283.265464" cy="92.5091697" rx="44.3547345" ry="58.9913546"></ellipse>
+            </g>
+            <g id="Legs" transform="translate(1243.065761, 750.000000) rotate(-90.000000) translate(-1243.065761, -750.000000) translate(493.065761, 609.000000)" fill="#22C1FF">
+                <polygon id="Leg-Top" points="1499.99648 140.774824 1147.17472 281.549647 1147.17472 0"></polygon>
+                <polygon id="Leg-Bottom" transform="translate(176.410876, 140.774824) scale(-1, 1) translate(-176.410876, -140.774824) " points="352.821752 140.774824 -1.70530257e-13 281.549647 -1.70530257e-13 0"></polygon>
+            </g>
+            <g class="Body" transform="translate(1242.337963, 749.839491) rotate(-90.000000) translate(-1242.337963, -749.839491) translate(824.837963, -7.160509)">
+                <ellipse fill="#000000" cx="417.337729" cy="756.832265" rx="417.337729" ry="756.832265"></ellipse>
+                <ellipse fill="#22C1FF" cx="578.627673" cy="626.112786" rx="80.6449719" ry="107.257008"></ellipse>
+                <ellipse fill="#22C1FF" cx="417.337729" cy="1241.49987" rx="80.6449719" ry="107.257008"></ellipse>
+                <ellipse fill="#22C1FF" cx="256.047786" cy="626.112786" rx="80.6449719" ry="107.257008"></ellipse>
+                <ellipse fill="#22C1FF" cx="417.337729" cy="273.505371" rx="80.6449719" ry="107.257008"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

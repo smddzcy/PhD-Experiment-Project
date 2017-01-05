@@ -1,0 +1,24 @@
+<svg viewBox="0 0 2000 1500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Hayriye</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Hayriye">
+            <g class="Body" transform="translate(1169.500000, 750.151832) scale(-1, 1) translate(-1169.500000, -750.151832) translate(339.000000, 331.151832)">
+                <path d="M311.284047,140.052356 L311.284047,0 L1348.89754,0 L1348.89754,139.616056 L1660.18158,139.616056 L1660.18158,698.080279 L1348.89754,698.080279 L1348.89754,837.696335 L311.284047,837.696335 L311.284047,698.516579 L0,698.516579 L0,140.052356 L311.284047,140.052356 Z" fill="#2DE7D1"></path>
+                <rect fill="#F8E81C" x="1348.89754" y="280.104712" width="194.552529" height="278.795812"></rect>
+                <rect fill="#8B572A" x="116.731518" y="280.104712" width="194.552529" height="278.795812"></rect>
+            </g>
+            <g id="Legs" transform="translate(1169.049935, 750.000000) scale(-1, 1) translate(-1169.049935, -750.000000) translate(881.549935, 0.000000)" fill="#F8E81C">
+                <path d="M359.328264,138.936984 L574.57847,331.151832 L0,331.151832 L215.898714,138.357876 L60.9597925,0 L514.915694,0 L359.328264,138.936984 Z" id="Leg-Top"></path>
+                <path d="M359.328264,1307.78515 L574.57847,1500 L0,1500 L215.898714,1307.20604 L60.9597925,1168.84817 L514.915694,1168.84817 L359.328264,1307.78515 Z" id="Leg-Bottom" transform="translate(287.289235, 1334.424084) scale(1, -1) translate(-287.289235, -1334.424084) "></path>
+            </g>
+            <g id="Head" transform="translate(0.000000, 545.000000)">
+                <polygon fill="#F8E81C" transform="translate(169.909209, 205.000000) scale(-1, 1) translate(-169.909209, -205.000000) " points="0 0.811518325 339.818418 0.811518325 295.790323 49.2593304 339.818418 102.905759 295.790323 151.353571 339.818418 205 295.790323 256.940657 339.818418 307.094241 295.790323 355.542053 339.818418 409.188482 0 409.188482"></polygon>
+                <rect fill="#9012FE" transform="translate(129.701686, 113.376963) scale(-1, 1) translate(-129.701686, -113.376963) " x="88.1971466" y="66.2565445" width="83.0090791" height="94.2408377"></rect>
+                <rect fill="#9012FE" transform="translate(129.701686, 296.623037) scale(-1, 1) translate(-129.701686, -296.623037) " x="88.1971466" y="249.502618" width="83.0090791" height="94.2408377"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

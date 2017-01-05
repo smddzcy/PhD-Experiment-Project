@@ -1,0 +1,55 @@
+@anim-duration: 1.5s;
+
+#moving-bug {
+  #Sukufe {
+    #Leg-Bottom-1 path,
+    #Leg-Top-1 path {
+      animation: row-leg-1 @anim-duration linear infinite;
+    }
+
+    #Leg-Bottom-2 path,
+    #Leg-Top-2 path {
+      animation: row-leg-2 @anim-duration linear infinite;
+    }
+
+    #Leg-Bottom-3 path,
+    #Leg-Top-3 path {
+      animation: row-leg-3 @anim-duration linear infinite;
+    }
+  }
+
+  #Muhittin {
+    #Leg-Top-1 polygon {
+      animation: cross-leg-top-1 @anim-duration linear infinite;
+    }
+
+    #Leg-Top-2 polygon {
+      animation: cross-leg-top-2 @anim-duration linear infinite;
+    }
+
+    #Leg-Bottom-1 polygon {
+      animation: cross-leg-bottom-1 @anim-duration linear infinite;
+    }
+
+    #Leg-Bottom-2 polygon {
+      animation: cross-leg-bottom-2 @anim-duration linear infinite;
+    }
+  }
+
+  #Marvin {
+    #Leg-Top path {
+      animation: in-out-leg-top @anim-duration linear infinite;
+    }
+
+    #Leg-Bottom path {
+      animation: in-out-leg-bottom @anim-duration linear infinite;
+    }
+  }
+
+  #Muserref {
+    #Leg-Bottom path,
+    #Leg-Top path {
+      animation: crippled-leg @anim-duration linear infinite;
+    }
+  }
+}
