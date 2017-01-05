@@ -381,6 +381,9 @@ Constants =
   ANSWER_TIMEOUT: 1500
 
 MainController = ($scope, $interval, $timeout, Constants, BugService) ->
+  @correctAnswerCount = 0
+  @wrongAnswerCount = 0
+
   @questionOptions = [
     "Species 1",
     "Species 2",
@@ -443,13 +446,17 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
         timer: Constants.ANSWER_TIMEOUT
         showConfirmButton: false
 
+      @correctAnswerCount++
       $timeout (-> init()), Constants.ANSWER_TIMEOUT
     else
       swal
         title: "Wrong Answer!"
         type: "error"
-        timer: Constants.ANSWER_TIMEOUT / 2
+        timer: Constants.ANSWER_TIMEOUT
         showConfirmButton: false
+
+      @wrongAnswerCount++
+      $timeout (-> init()), Constants.ANSWER_TIMEOUT
 
   init()
 
