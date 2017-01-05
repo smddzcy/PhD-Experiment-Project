@@ -122,6 +122,11 @@ module.exports = function(grunt) {
             files: [
               {expand: true, cwd: 'src/assets/', src: ['img/**/*'], dest: 'dist'}
             ]
+          },
+          vendor: {
+            files :[
+              {expand: true, cwd: 'src/vendor/', src: ['**/*'], dest: 'dist/vendor/'}
+            ]
           }
         }
     });
