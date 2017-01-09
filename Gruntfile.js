@@ -11,12 +11,12 @@ module.exports = function(grunt) {
                     separator: ';', // separator between concatenated files
                     nonull: true
                 },
-                src: ["src/**/*.js", "dist/**/*.coffee.js"], // all the js files in "src" folder
+                src: ["src/assets/**/*.js", "dist/**/*.coffee.js"], // all the js files in "src" folder
                 dest: 'dist/main.js' // destination fie, which is "dist / this package's name . js"
 
             },
             css: {
-                src: ["src/**/*.css", "dist/**/*.less.css"], // all the js files in "src" folder
+                src: ["src/assets/**/*.css", "dist/**/*.less.css"], // all the js files in "src" folder
                 dest: 'dist/main.css' // destination fie, which is "dist / this package's name . js"
             }
         },
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 
         jshint: {
             // define the files to lint
-            files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+            files: ['Gruntfile.js', 'src/assets/**/*.js', 'test/**/*.js'],
             // configure JSHint (documented at http://www.jshint.com/docs/)
             options: {
                 // more options here if you want to override JSHint defaults
@@ -48,14 +48,14 @@ module.exports = function(grunt) {
 
         coffee: {
             dist: {
-                src: ['src/**/*.coffee'],
+                src: ['src/assets/**/*.coffee'],
                 dest: 'dist/main.coffee.js'
             }
         },
 
         less: {
             dist: {
-                src: ['src/**/*.less'],
+                src: ['src/assets/**/*.less'],
                 dest: 'dist/main.less.css'
             }
         },
