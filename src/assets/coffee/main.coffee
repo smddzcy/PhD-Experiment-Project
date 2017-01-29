@@ -127,13 +127,13 @@ BugService = ($compile, $rootScope, Constants) ->
 
   bugNumber = 0 # Current bug number
 
-  # Shuffle the bugs
-  MOVING_BUGS.shuffle()
-  STATIONARY_BUGS.shuffle()
-
-
   Bug =
     getNextElements: ->
+      # Shuffle the bugs on each block (each 16 trials)
+      if bugNumber % 16 is 0
+        MOVING_BUGS.shuffle()
+        STATIONARY_BUGS.shuffle()
+
       # Get link functions
       linkFnMoving = $compile MOVING_BUGS[bugNumber % MOVING_BUGS.length]
       linkFnStationary = $compile STATIONARY_BUGS[bugNumber % STATIONARY_BUGS.length]
@@ -151,6 +151,9 @@ BugService = ($compile, $rootScope, Constants) ->
         bgItem: bgItemDomEl
         bugNumber: parseInt movingBugDomEl.attr('bug-number')
       }
+
+    getTrialNumber: ->
+      bugNumber
 
     setInitialPositions: (movingBug, stationaryBug, bgItem, away = false) ->
       bgItemPositions =
@@ -451,6 +454,10 @@ Constants =
   ANSWER_TIMEOUT: 1500
 
 MainController = ($scope, $interval, $timeout, Constants, BugService) ->
+  # Initialize the local storage store, if it's not initialized before
+  unless localStorage._expData?
+    localStorage._expData = JSON.stringify {}
+
   @correctAnswerCount = 0
   @wrongAnswerCount = 0
 
@@ -462,6 +469,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
   ]
 
   @isMovementFinished = false
+  @firstInit = true
 
   startMovement = =>
     b1 = @movingBug.find('.Body')
@@ -482,10 +490,12 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
     @movingBug.find('[id*=Leg] *').css('animation-play-state', 'paused')
     @isMovementFinished = true
 
-  init = =>
+  init = () =>
+    # Currenly, only 1 block.
+    return if BugService.getTrialNumber() is 16
+
     @isMovementFinished = false
     @isBugMovingAway = Math.random() < 0.5
-    @isZigzag = true
 
     @movingBug = $('#moving-bug')
     @stationaryBug = $('#stationary-bug')
@@ -504,13 +514,34 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
       BugService.setInitialPositions(@movingBug, @stationaryBug, @bgItem, @isBugMovingAway)
       startMovement()
 
+  log = (key, val) ->
+    data = JSON.parse localStorage._expData
+    data[key].push val
+    localStorage._expData = JSON.stringify data
+
   @onAnswerSelected = ($index) =>
     $('body').css 'pointer-events', 'none'
     setTimeout ->
       $('body').css 'pointer-events', 'all'
     , Constants.ANSWER_TIMEOUT
 
+    # Initialize the local storage store if it's the first answer
+    if @firstInit
+      @localStorageKey = Date.now()
+      data = JSON.parse localStorage._expData
+      data[@localStorageKey] = []
+      localStorage._expData = JSON.stringify data
+
+      @firstInit = false
+
     if @currentEls.bugNumber is $index
+      log @localStorageKey, {
+        time: Date.now()
+        correct: true
+        selectedAnswer: @questionOptions[$index]
+        correctAnswer: @questionOptions[@currentEls.bugNumber]
+      }
+
       swal
         title: ""
         type: "success"
@@ -520,6 +551,13 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
       @correctAnswerCount++
       $timeout (-> init()), Constants.ANSWER_TIMEOUT
     else
+      log @localStorageKey, {
+        time: Date.now()
+        correct: false
+        selectedAnswer: @questionOptions[$index]
+        correctAnswer: @questionOptions[@currentEls.bugNumber]
+      }
+
       swal
         title: ""
         type: "error"

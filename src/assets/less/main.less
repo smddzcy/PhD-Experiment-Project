@@ -5,7 +5,9 @@ body {
   overflow: hidden;
 }
 
-[ng\:cloak], [ng-cloak], .ng-cloak {
+.ng-cloak,
+[ng-cloak],
+[ng\:cloak] {
   display: none;
 }
 
@@ -26,21 +28,20 @@ svg {
   height: 73vh;
   margin-left: auto;
   margin-right: auto;
-  padding: 5% 5% 22% 5%;
-  padding: 5vh 5vw 22vh 5vw;
-}
+  padding: 5vh 5vw 22vh;
 
-#question-wrapper {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  height: 12%;
-  height: 12vh;
-  width: 90%;
-  width: 90vw;
+  #question-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    height: 12%;
+    height: 12vh;
+    width: 90%;
+    width: 90vw;
+  }
 }
 
 .element {
@@ -53,7 +54,7 @@ svg {
   z-index: 2;
 }
 
-.big-button {
+.big-button {
   padding: 0 5%;
   margin-bottom: 0;
 }

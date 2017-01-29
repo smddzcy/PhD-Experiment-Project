@@ -2,7 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Wow</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>-</title>
+    <link rel="stylesheet" href="vendor/normalize.css">
+    <link rel="stylesheet" href="vendor/skeleton.css">
     <link rel="stylesheet" href="vendor/sweetalert.css">
     <!-- Development --> <link rel="stylesheet" href="main.css">
     <!-- On prod: <link rel="stylesheet" href="main.min.css"> -->
@@ -736,7 +740,7 @@
         <button ng-repeat="opt in vm.questionOptions"
                 ng-click="vm.onAnswerSelected($index)"
                 class="big-button">{{ opt }}</button>
-      </div>
+          </div>
     </div>
 
     <script src="http://localhost:35729/livereload.js"></script>
