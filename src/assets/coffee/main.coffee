@@ -1,28 +1,52 @@
 MuserrefDirective = ->
   restrict: 'E'
   replace: true
-  templateUrl: 'img/muserref.svg'
+  templateUrl: (el, attrs) ->
+    switch parseInt attrs.type
+      when 1 then 'img/muserref-2.svg'
+      when 2 then 'img/muserref-3.svg'
+      when 3 then 'img/muserref-4.svg'
+      else 'img/muserref.svg'
+
   link: (element, attributes, scope) ->
     $(attributes[0]).addClass 'responsive-img'
 
 MarvinDirective = ->
   restrict: 'E'
   replace: true
-  templateUrl: 'img/marvin.svg'
+  templateUrl: (el, attrs) ->
+    switch parseInt attrs.type
+      when 1 then 'img/marvin-2.svg'
+      when 2 then 'img/marvin-3.svg'
+      when 3 then 'img/marvin-4.svg'
+      else 'img/marvin.svg'
+
   link: (element, attributes, scope) ->
     $(attributes[0]).addClass 'responsive-img'
 
 MuhittinDirective = ->
   restrict: 'E'
   replace: true
-  templateUrl: 'img/muhittin.svg'
+  templateUrl: (el, attrs) ->
+    switch parseInt attrs.type
+      when 1 then 'img/muhittin-2.svg'
+      when 2 then 'img/muhittin-3.svg'
+      when 3 then 'img/muhittin-4.svg'
+      else 'img/muhittin.svg'
+
   link: (element, attributes, scope) ->
     $(attributes[0]).addClass 'responsive-img'
 
 SukufeDirective = ->
   restrict: 'E'
   replace: true
-  templateUrl: 'img/sukufe.svg'
+  templateUrl: (el, attrs) ->
+    switch parseInt attrs.type
+      when 1 then 'img/sukufe-2.svg'
+      when 2 then 'img/sukufe-3.svg'
+      when 3 then 'img/sukufe-4.svg'
+      else 'img/sukufe.svg'
+
   link: (element, attributes, scope) ->
     $(attributes[0]).addClass 'responsive-img'
 
@@ -70,10 +94,25 @@ SwampDirective = ->
 
 BugService = ($compile, $rootScope, Constants) ->
   MOVING_BUGS = [
-    "<sukufe></sukufe>",
-    "<muhittin></muhittin>",
-    "<marvin></marvin>",
-    "<muserref></muserref>"
+    '<sukufe type="0" bug-number="0"></sukufe>',
+    '<muhittin type="0" bug-number="1"></muhittin>',
+    '<marvin type="0" bug-number="2"></marvin>',
+    '<muserref type="0" bug-number="3"></muserref>',
+
+    '<sukufe type="1" bug-number="0"></sukufe>',
+    '<muhittin type="1" bug-number="1"></muhittin>',
+    '<marvin type="1" bug-number="2"></marvin>',
+    '<muserref type="1" bug-number="3"></muserref>',
+
+    '<sukufe type="2" bug-number="0"></sukufe>',
+    '<muhittin type="2" bug-number="1"></muhittin>',
+    '<marvin type="2" bug-number="2"></marvin>',
+    '<muserref type="2" bug-number="3"></muserref>',
+
+    '<sukufe type="3" bug-number="0"></sukufe>',
+    '<muhittin type="3" bug-number="1"></muhittin>',
+    '<marvin type="3" bug-number="2"></marvin>',
+    '<muserref type="3" bug-number="3"></muserref>'
   ]
   STATIONARY_BUGS = [
     "<hayriye></hayriye>",
@@ -85,21 +124,32 @@ BugService = ($compile, $rootScope, Constants) ->
     "<stone></stone>",
     "<swamp></swamp>"
   ]
+
   bugNumber = 0 # Current bug number
+
+  # Shuffle the bugs
+  MOVING_BUGS.shuffle()
+  STATIONARY_BUGS.shuffle()
+
 
   Bug =
     getNextElements: ->
-      rand = Math.floor Math.random() * MOVING_BUGS.length
+      # Get link functions
+      linkFnMoving = $compile MOVING_BUGS[bugNumber % MOVING_BUGS.length]
+      linkFnStationary = $compile STATIONARY_BUGS[bugNumber % STATIONARY_BUGS.length]
 
-      movingBugDomEl = $compile(MOVING_BUGS[rand])($rootScope.$new())
-      stationaryBugDomEl = $compile(STATIONARY_BUGS[rand])($rootScope.$new())
+      # Compile the elements by giving them a scope
+      movingBugDomEl = linkFnMoving $rootScope.$new()
+      stationaryBugDomEl = linkFnStationary $rootScope.$new()
       bgItemDomEl = $compile(BG_ITEMS.random())($rootScope.$new())
+
+      bugNumber += 1
 
       return {
         movingBug: movingBugDomEl
         stationaryBug: stationaryBugDomEl
         bgItem: bgItemDomEl
-        bugNumber: rand
+        bugNumber: parseInt movingBugDomEl.attr('bug-number')
       }
 
     setInitialPositions: (movingBug, stationaryBug, bgItem, away = false) ->
@@ -345,12 +395,22 @@ BugService = ($compile, $rootScope, Constants) ->
     isOffScreen: (el) ->
       rect = $(el)[0].getBoundingClientRect()
 
-      (rect.left < window.innerWidth * 0.02 or
-      rect.top < window.innerHeight * 0.02 or
-      rect.right > window.innerWidth * 0.98 or
-      rect.bottom > window.innerHeight * 0.89)
+      delta = 0.004
+      (rect.left < window.innerWidth * delta or
+      rect.top < window.innerHeight * delta or
+      rect.right > window.innerWidth * (1 - delta) or
+      rect.bottom > window.innerHeight * 0.9 + delta)
 
-    moveBug: (movingBug, stationaryBug, away = false) ->
+    rotateVector: (vector, degree) ->
+      cos_t = Math.cos degree / 180 * Math.PI
+      sin_t = Math.sin degree / 180 * Math.PI
+
+      return {
+        left: cos_t * vector.left - cos_t * vector.top,
+        top: sin_t * (vector.left + vector.top)
+      }
+
+    getMovementVector: (movingBug, stationaryBug, away = false) ->
       movingBugPos = movingBug.offset()
       stationaryBugPos = stationaryBug.offset()
 
@@ -370,14 +430,24 @@ BugService = ($compile, $rootScope, Constants) ->
       if 0 < movementVector.left < delta or -delta < movementVector.left < 0
         movementVector.left = 0
 
-      movingBug.offset
-        top: (movingBugPos.top + movementVector.top)
-        left: (movingBugPos.left + movementVector.left)
+      movementVector
+
+    sumVectors: (v1, v2) ->
+      return {
+        top: (v1.top + v2.top)
+        left: (v1.left + v2.left)
+      }
+
+    moveBug: (movingBug, stationaryBug, away = false) ->
+      movementVector = @getMovementVector(movingBug, stationaryBug, away)
+
+      movingBugPos = movingBug.offset()
+      movingBug.offset (@sumVectors movingBugPos, movementVector)
 
   Bug
 
 Constants =
-  FPS: 120
+  FPS: 140
   ANSWER_TIMEOUT: 1500
 
 MainController = ($scope, $interval, $timeout, Constants, BugService) ->
@@ -394,10 +464,10 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
   @isMovementFinished = false
 
   startMovement = =>
-    @movement = $interval =>
-      b1 = @movingBug.find('.Body')
-      b2 = @stationaryBug.find('.Body')
+    b1 = @movingBug.find('.Body')
+    b2 = @stationaryBug.find('.Body')
 
+    @movement = $interval =>
       if BugService.intersects(b1, b2) or BugService.isOffScreen(@movingBug)
         stopMovement()
 
@@ -409,12 +479,13 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
 
   stopMovement = =>
     $interval.cancel(@movement)
-    @movingBug.find('[id^=Leg] *').css('animation-play-state', 'paused')
+    @movingBug.find('[id*=Leg] *').css('animation-play-state', 'paused')
     @isMovementFinished = true
 
   init = =>
     @isMovementFinished = false
     @isBugMovingAway = Math.random() < 0.5
+    @isZigzag = true
 
     @movingBug = $('#moving-bug')
     @stationaryBug = $('#stationary-bug')
@@ -441,7 +512,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
 
     if @currentEls.bugNumber is $index
       swal
-        title: "Correct!"
+        title: ""
         type: "success"
         timer: Constants.ANSWER_TIMEOUT
         showConfirmButton: false
@@ -450,7 +521,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
       $timeout (-> init()), Constants.ANSWER_TIMEOUT
     else
       swal
-        title: "Wrong Answer!"
+        title: ""
         type: "error"
         timer: Constants.ANSWER_TIMEOUT
         showConfirmButton: false

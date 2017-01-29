@@ -1,55 +1,150 @@
-@anim-duration: 1.5s;
+@anim-duration: 0.8s;
 
 #moving-bug {
-  #Sukufe {
-    #Leg-Bottom-1 path,
-    #Leg-Top-1 path {
+  will-change: transform;
+  transform: translateZ(0);
+
+  [id^=sukufe-] {
+    [id$=Leg-Bottom-1] path,
+    [id$=Leg-Top-1] path {
+      will-change: transform;
+      transform: translateZ(0);
       animation: row-leg-1 @anim-duration linear infinite;
+      transform-origin: bottom;
     }
 
-    #Leg-Bottom-2 path,
-    #Leg-Top-2 path {
+    [id$=Leg-Top-1],
+    [id$=Leg-Top-2] {
+      polygon {
+        will-change: transform;
+        transform: translateZ(0);
+        animation: row-leg-1 @anim-duration linear infinite;
+        transform-origin: bottom;
+      }
+    }
+
+    [id$=Leg-Bottom-1],
+    [id$=Leg-Bottom-2] {
+      polygon {
+        will-change: transform;
+        transform: translateZ(0);
+        animation: row-leg-1 @anim-duration linear infinite;
+        transform-origin: top;
+      }
+    }
+
+    [id$=Leg-Bottom-2] path,
+    [id$=Leg-Bottom] path,
+    [id$=Leg-Top-2] path,
+    [id$=Leg-Top] path {
+      will-change: transform;
+      transform: translateZ(0);
       animation: row-leg-2 @anim-duration linear infinite;
+      transform-origin: bottom;
     }
 
-    #Leg-Bottom-3 path,
-    #Leg-Top-3 path {
+    [id$=Leg-Bottom-3] path,
+    [id$=Leg-Top-3] path {
+      will-change: transform;
+      transform: translateZ(0);
       animation: row-leg-3 @anim-duration linear infinite;
+      transform-origin: bottom;
     }
   }
 
-  #Muhittin {
-    #Leg-Top-1 polygon {
+  [id^=muhittin-] {
+    [id$=Leg-Top-1] polygon {
+      will-change: transform;
+      transform: translateZ(0);
       animation: cross-leg-top-1 @anim-duration linear infinite;
     }
 
-    #Leg-Top-2 polygon {
+    [id$=Leg-Top-2] polygon {
+      will-change: transform;
+      transform: translateZ(0);
       animation: cross-leg-top-2 @anim-duration linear infinite;
     }
 
-    #Leg-Bottom-1 polygon {
+    [id$=Leg-Bottom-1] polygon {
+      will-change: transform;
+      transform: translateZ(0);
       animation: cross-leg-bottom-1 @anim-duration linear infinite;
+      transform-origin: top;
     }
 
-    #Leg-Bottom-2 polygon {
+    [id$=Leg-Bottom-2] polygon {
+      will-change: transform;
+      transform: translateZ(0);
       animation: cross-leg-bottom-2 @anim-duration linear infinite;
+      transform-origin: top;
+    }
+
+    [id$=Leg-Top-1],
+    [id$=Leg-Top-2],
+    [id$=Leg-Top-3],
+    [id$=Leg-Top] {
+      path {
+        will-change: transform;
+        transform: translateZ(0);
+        animation: cross-leg-top-1 @anim-duration linear infinite;
+        transform-origin: bottom;
+      }
+    }
+
+    [id$=Leg-Bottom-1],
+    [id$=Leg-Bottom-2],
+    [id$=Leg-Bottom-3],
+    [id$=Leg-Bottom] {
+      path {
+        will-change: transform;
+        transform: translateZ(0);
+        animation: cross-leg-bottom-1 @anim-duration linear infinite;
+        transform-origin: bottom;
+      }
     }
   }
 
-  #Marvin {
-    #Leg-Top path {
-      animation: in-out-leg-top @anim-duration linear infinite;
+  [id^=marvin-] {
+    [id$="Leg-Top"] {
+      path,
+      polygon {
+        will-change: transform;
+        transform: translateZ(0);
+        animation: in-out-leg-top @anim-duration linear infinite;
+      }
     }
 
-    #Leg-Bottom path {
-      animation: in-out-leg-bottom @anim-duration linear infinite;
+    [id$="Leg-Bottom"] {
+      path,
+      polygon {
+        will-change: transform;
+        transform: translateZ(0);
+        animation: in-out-leg-bottom @anim-duration linear infinite;
+      }
+    }
+
+    &[id^=marvin-3] {
+      [id$="Leg-Bottom"],
+      [id$="Leg-Top"] {
+        path,
+        polygon {
+          will-change: transform;
+          transform: translateZ(0);
+          animation: in-out-leg-top @anim-duration linear infinite;
+        }
+      }
     }
   }
 
-  #Muserref {
-    #Leg-Bottom path,
-    #Leg-Top path {
-      animation: crippled-leg @anim-duration linear infinite;
+  [id^=muserref-] {
+    [id$=Leg-Bottom],
+    [id$=Leg-Top] {
+      path,
+      polygon {
+        will-change: transform;
+        transform: translateZ(0);
+        animation: crippled-leg @anim-duration linear infinite;
+      }
     }
   }
 }

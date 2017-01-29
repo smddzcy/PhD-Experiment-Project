@@ -1,46 +1,43 @@
 <svg viewBox="0 0 2000 1500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-    <title>Nurdane</title>
-    <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-nurdane-1" x="314.287561" y="0" width="1178.57835" height="814"></rect>
-        <mask id="mask-nurdane-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1178.57835" height="814" fill="white">
-            <use xlink:href="#path-nurdane-1"></use>
+        <rect id="nurdane--path-1" x="314.287561" y="0" width="1178.57835" height="814"></rect>
+        <mask id="nurdane--mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1178.57835" height="814" fill="white">
+            <use xlink:href="#nurdane--path-1"></use>
         </mask>
-        <rect id="path-nurdane-3" x="0" y="217.066667" width="338" height="379.866667"></rect>
-        <mask id="mask-nurdane-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="338" height="379.866667" fill="white">
-            <use xlink:href="#path-nurdane-3"></use>
+        <rect id="nurdane--path-3" x="0" y="217.066667" width="338" height="379.866667"></rect>
+        <mask id="nurdane--mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="338" height="379.866667" fill="white">
+            <use xlink:href="#nurdane--path-3"></use>
         </mask>
-        <rect id="path-nurdane-5" x="1430" y="217" width="377.287561" height="379.866667"></rect>
-        <mask id="mask-nurdane-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="377.287561" height="379.866667" fill="white">
-            <use xlink:href="#path-nurdane-5"></use>
+        <rect id="nurdane--path-5" x="1430" y="217" width="377.287561" height="379.866667"></rect>
+        <mask id="nurdane--mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="377.287561" height="379.866667" fill="white">
+            <use xlink:href="#nurdane--path-5"></use>
         </mask>
-        <polygon id="path-nurdane-7" points="104.76252 298.466667 314.287561 298.466667 314.287561 515.533333 104.76252 515.533333 104.76252 397.238992"></polygon>
-        <mask id="mask-nurdane-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="209.525041" height="217.066667" fill="white">
-            <use xlink:href="#path-nurdane-7"></use>
+        <polygon id="nurdane--path-7" points="104.76252 298.466667 314.287561 298.466667 314.287561 515.533333 104.76252 515.533333 104.76252 397.238992"></polygon>
+        <mask id="nurdane--mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="209.525041" height="217.066667" fill="white">
+            <use xlink:href="#nurdane--path-7"></use>
         </mask>
-        <rect id="path-nurdane-9" x="1492.86592" y="298.466667" width="209.525041" height="217.066667"></rect>
-        <mask id="mask-nurdane-10" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="209.525041" height="217.066667" fill="white">
-            <use xlink:href="#path-nurdane-9"></use>
+        <rect id="nurdane--path-9" x="1492.86592" y="298.466667" width="209.525041" height="217.066667"></rect>
+        <mask id="nurdane--mask-10" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="209.525041" height="217.066667" fill="white">
+            <use xlink:href="#nurdane--path-9"></use>
         </mask>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Nurdane">
+    <g id="nurdane--Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nurdane--nurdane">
             <g class="Body" transform="translate(1097.000000, 748.000000) scale(-1, 1) translate(-1097.000000, -748.000000) translate(193.000000, 341.000000)" stroke-width="1.99982197">
-                <use stroke="#2DE7D1" mask="url(#mask-nurdane-2)" fill="#2DE7D1" xlink:href="#path-nurdane-1"></use>
-                <use stroke="#2DE7D1" mask="url(#mask-nurdane-4)" fill="#2DE7D1" xlink:href="#path-nurdane-3"></use>
-                <use stroke="#2DE7D1" mask="url(#mask-nurdane-6)" fill="#2DE7D1" xlink:href="#path-nurdane-5"></use>
-                <use stroke="#8B572A" mask="url(#mask-nurdane-8)" fill="#8B572A" xlink:href="#path-nurdane-7"></use>
-                <use stroke="#F8E81C" mask="url(#mask-nurdane-10)" fill="#F8E81C" xlink:href="#path-nurdane-9"></use>
+                <use id="nurdane--Rectangle" stroke="#2DE7D1" mask="url(#nurdane--mask-2)" fill="#2DE7D1" xlink:href="#nurdane--path-1"></use>
+                <use id="nurdane--Rectangle-2" stroke="#2DE7D1" mask="url(#nurdane--mask-4)" fill="#2DE7D1" xlink:href="#nurdane--path-3"></use>
+                <use id="nurdane--Rectangle-2" stroke="#2DE7D1" mask="url(#nurdane--mask-6)" fill="#2DE7D1" xlink:href="#nurdane--path-5"></use>
+                <use id="nurdane--Rectangle-3" stroke="#8B572A" mask="url(#nurdane--mask-8)" fill="#8B572A" xlink:href="#nurdane--path-7"></use>
+                <use id="nurdane--Rectangle-3" stroke="#F8E81C" mask="url(#nurdane--mask-10)" fill="#F8E81C" xlink:href="#nurdane--path-9"></use>
             </g>
-            <path d="M0,570.753081 C0,570.753081 48.4772918,522 96.9545836,522 C145.431875,522 193.909167,570.753081 193.909167,570.753081 L193.909167,760.264562 L193.909167,928.710875 C193.909167,928.710875 145.431875,978 96.9545836,978 C48.4772918,978 0,928.710875 0,928.710875 L0,570.753081 Z" id="Head" fill="#4990E2" transform="translate(96.954584, 750.000000) scale(-1, 1) translate(-96.954584, -750.000000) "></path>
-            <g id="Eyes" transform="translate(91.500000, 747.000000) scale(-1, 1) translate(-91.500000, -747.000000) translate(41.000000, 609.000000)" fill="#D8D8D8">
-                <ellipse id="Eye-Top" cx="50.1061871" cy="51.5" rx="49.9765895" ry="51.5"></ellipse>
-                <ellipse id="Eye-Bottom" cx="50.1061871" cy="224.5" rx="49.9765895" ry="51.5"></ellipse>
+            <path d="M0,570.753081 C0,570.753081 48.4772918,522 96.9545836,522 C145.431875,522 193.909167,570.753081 193.909167,570.753081 L193.909167,760.264562 L193.909167,928.710875 C193.909167,928.710875 145.431875,978 96.9545836,978 C48.4772918,978 0,928.710875 0,928.710875 L0,570.753081 Z" id="nurdane--Head" fill="#4990E2" transform="translate(96.954584, 750.000000) scale(-1, 1) translate(-96.954584, -750.000000) "></path>
+            <g id="nurdane--Eyes" transform="translate(91.500000, 747.000000) scale(-1, 1) translate(-91.500000, -747.000000) translate(41.000000, 609.000000)" fill="#D8D8D8">
+                <ellipse id="nurdane--Eye-Top" cx="50.1061871" cy="51.5" rx="49.9765895" ry="51.5"></ellipse>
+                <ellipse id="nurdane--Eye-Bottom" cx="50.1061871" cy="224.5" rx="49.9765895" ry="51.5"></ellipse>
             </g>
-            <g id="Legs" transform="translate(1098.000000, 749.500000) scale(-1, 1) translate(-1098.000000, -749.500000) translate(728.000000, 0.000000)" fill="#4990E2">
-                <path d="M81.3304114,198.13687 C148.263937,139.602726 224.584519,159.664777 224.584519,159.664777 C224.584519,159.664777 274.811235,3.38550256e-14 370.076972,2.84217094e-14 C465.342709,2.84217094e-14 515.569425,159.664777 515.569425,159.664777 C515.569425,159.664777 584.77831,137.179628 658.823533,198.158342 C732.868756,259.137056 739.403969,344 739.403969,344 L0.749975849,344 C0.749975849,344 14.3968856,256.671014 81.3304114,198.13687 Z" id="Leg-Top"></path>
-                <path d="M81.5804356,1353.13687 C148.513961,1294.60273 224.834543,1314.66478 224.834543,1314.66478 C224.834543,1314.66478 275.061259,1155 370.326996,1155 C465.592733,1155 515.81945,1314.66478 515.81945,1314.66478 C515.81945,1314.66478 585.028334,1292.17963 659.073557,1353.15834 C733.11878,1414.13706 739.653993,1499 739.653993,1499 L1,1499 C1,1499 14.6469097,1411.67101 81.5804356,1353.13687 Z" id="Leg-Bottom" transform="translate(370.326996, 1327.000000) scale(1, -1) translate(-370.326996, -1327.000000) "></path>
+            <g id="nurdane--Legs" transform="translate(1098.000000, 749.500000) scale(-1, 1) translate(-1098.000000, -749.500000) translate(728.000000, 0.000000)" fill="#4990E2">
+                <path d="M81.3304114,198.13687 C148.263937,139.602726 224.584519,159.664777 224.584519,159.664777 C224.584519,159.664777 274.811235,3.38550256e-14 370.076972,2.84217094e-14 C465.342709,2.84217094e-14 515.569425,159.664777 515.569425,159.664777 C515.569425,159.664777 584.77831,137.179628 658.823533,198.158342 C732.868756,259.137056 739.403969,344 739.403969,344 L0.749975849,344 C0.749975849,344 14.3968856,256.671014 81.3304114,198.13687 Z" id="nurdane--Leg-Top"></path>
+                <path d="M81.5804356,1353.13687 C148.513961,1294.60273 224.834543,1314.66478 224.834543,1314.66478 C224.834543,1314.66478 275.061259,1155 370.326996,1155 C465.592733,1155 515.81945,1314.66478 515.81945,1314.66478 C515.81945,1314.66478 585.028334,1292.17963 659.073557,1353.15834 C733.11878,1414.13706 739.653993,1499 739.653993,1499 L1,1499 C1,1499 14.6469097,1411.67101 81.5804356,1353.13687 Z" id="nurdane--Leg-Bottom" transform="translate(370.326996, 1327.000000) scale(1, -1) translate(-370.326996, -1327.000000) "></path>
             </g>
         </g>
     </g>
