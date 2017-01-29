@@ -492,7 +492,9 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
 
   init = () =>
     # Currenly, only 1 block.
-    return if BugService.getTrialNumber() is 16
+    if BugService.getTrialNumber() is 16
+      $('#main-wrapper').hide()
+      return
 
     @isMovementFinished = false
     @isBugMovingAway = Math.random() < 0.5

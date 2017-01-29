@@ -136,7 +136,7 @@
           <tbody>
             <tr ng-repeat="answer in answers track by $index">
               <td>{{ ::answer.time | date:'yyyy-MM-dd HH:mm:ss Z' }}</td>
-              <td>{{ ::$index }}</td>
+              <td>{{ ::$index+1 }}</td>
               <td>{{ ::answer.selectedAnswer }}</td>
               <td>{{ ::answer.correctAnswer }}</td>
               <td class="answer-correctness-col"
@@ -157,22 +157,35 @@
     app.controller('LogController', [
       '$scope', '$interval', '$timeout',
       function ($scope, $interval, $timeout) {
-        this.logs = JSON.parse(localStorage._expData);
+        var getData = function() {
+          return JSON.parse(localStorage._expData);
+        };
 
-        var logsCsv = []
-        logsCsv.push('Start Time,Answer Time,Is Correct,Selected Answer,Correct Answer');
-        for (time in this.logs) {
-          if (this.logs.hasOwnProperty(time)) {
-            for(data of this.logs[time]) {
-              logsCsv.push([time, data.time, data.correct ? 'true' : 'false',
-                data.selectedAnswer, data.correctAnswer].join(','));
-            }
-          }
-        }
-        this.logsCsvString = logsCsv.join('\r\n');
+        this.logs = getData();
 
-        angular.element(document.getElementById('export-all-to-csv'))
-          .attr('href', 'data:application/csv;charset=utf-8,' + encodeURI(this.logsCsvString));
+        $interval(function(){
+          $timeout(function(){
+            $scope.$apply(function(){
+              console.log("wow");
+              this.logs = getData();
+
+              var logsCsv = []
+              logsCsv.push('Start Time,Answer Time,Is Correct,Selected Answer,Correct Answer');
+              for (time in this.logs) {
+                if (this.logs.hasOwnProperty(time)) {
+                  for(data of this.logs[time]) {
+                    logsCsv.push([time, data.time, data.correct ? 'true' : 'false',
+                      data.selectedAnswer, data.correctAnswer].join(','));
+                  }
+                }
+              }
+              this.logsCsvString = logsCsv.join('\r\n');
+
+              angular.element(document.getElementById('export-all-to-csv'))
+                .attr('href', 'data:application/csv;charset=utf-8,' + encodeURI(this.logsCsvString));
+            }.bind(this));
+          }.bind(this));
+        }.bind(this), 2000);
 
         this.encodeJson = function(data) {
           return encodeURIComponent(JSON.stringify(data));
