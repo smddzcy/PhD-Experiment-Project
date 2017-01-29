@@ -1,0 +1,38 @@
+<svg viewBox="0 0 2000 1500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="sukufe-4--Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="sukufe-4--sukufe-4">
+            <g id="sukufe-4--Leg-Top" transform="translate(940.000000, 0.000000)" fill="#4A4A4A">
+                <g id="sukufe-4--Sukufe4-Leg-Top-2" transform="translate(335.089568, 0.000000)">
+                    <polygon id="sukufe-4--Sukufe4-Rectangle-Leg" points="94.8366702 582.761578 1.00753611 582.763805 0 1.78486787 94.8366702 0"></polygon>
+                </g>
+                <g id="sukufe-4--Sukufe4-Leg-Top-1">
+                    <polygon id="sukufe-4--Sukufe4-Rectangle-Leg" points="94.8366702 582.761578 1.00753611 582.763805 0 1.78486787 94.8366702 0"></polygon>
+                </g>
+            </g>
+            <g id="sukufe-4--Leg-Bottom" transform="translate(1155.500000, 1208.500000) scale(-1, 1) translate(-1155.500000, -1208.500000) translate(940.000000, 917.000000)" fill="#4A4A4A">
+                <g id="sukufe-4--Sukufe4-Leg-Bottom-2" transform="translate(335.089568, 0.000000)">
+                    <polygon id="sukufe-4--Sukufe4-Rectangle-Leg" points="94.8366702 582.761578 1.00753611 582.763805 0 1.78486787 94.8366702 0"></polygon>
+                </g>
+                <g id="sukufe-4--Sukufe4-Leg-Bottom-1">
+                    <polygon id="sukufe-4--Sukufe4-Rectangle-Leg" points="94.8366702 582.761578 1.00753611 582.763805 0 1.78486787 94.8366702 0"></polygon>
+                </g>
+            </g>
+            <g id="sukufe-4--Eye-Top" transform="translate(-1.000000, 553.000000)">
+                <path d="M0.025854109,0.0892552509 L278.984607,0.0892552509 C278.984607,0.0892552509 396.147738,157.105706 396.147738,175.87318 C396.147738,194.640654 278.984607,132.787825 278.984607,132.787825 L0.025854109,132.787825 L0.025854109,0.0892552509 Z" id="sukufe-4--Sukufe4-Rectangle" fill="#7ED321"></path>
+                <rect id="sukufe-4--Sukufe4-Rectangle-2" fill="#F8E81C" x="61.9676824" y="41.8508864" width="133.88735" height="47.9030475"></rect>
+            </g>
+            <g id="sukufe-4--Eye-Bottom" transform="translate(198.500000, 863.000000) scale(1, -1) translate(-198.500000, -863.000000) translate(0.000000, 773.000000)">
+                <path d="M0.025854109,0.0892552509 L278.984607,0.0892552509 C278.984607,0.0892552509 396.147738,157.105706 396.147738,175.87318 C396.147738,194.640654 278.984607,132.787825 278.984607,132.787825 L0.025854109,132.787825 L0.025854109,0.0892552509 Z" id="sukufe-4--Sukufe4-Rectangle" fill="#7ED321"></path>
+                <rect id="sukufe-4--Sukufe4-Rectangle-2" fill="#F8E81C" x="60.9676824" y="41.8508864" width="133.88735" height="47.9030475"></rect>
+            </g>
+            <g class="Body" transform="translate(309.000000, 334.898844)">
+                <path d="M414.796621,623.003061 C414.796621,623.003061 1.4896649e-14,542.802314 0,418.347836 C0,293.893358 414.796621,213.690435 414.796621,213.690435 C414.796621,213.690435 592.83724,1.62804579e-14 864.872814,0 C1136.90839,0 1274.85302,213.690435 1274.85302,213.690435 C1274.85302,213.690435 1688.7286,293.232307 1690.08025,418.346748 C1691.43189,543.461189 1280.2391,628.674482 1280.2391,628.674482 C1280.2391,628.674482 1107.02077,830.202312 864.872814,830.202312 C622.724853,830.202312 414.796621,623.003061 414.796621,623.003061 Z" id="sukufe-4--Sukufe4-Body-1" fill="#F6A623"></path>
+                <g id="sukufe-4--Sukufe4-Body-Stuff" transform="translate(531.822947, 202.673410)" fill="#EF001D">
+                    <ellipse id="sukufe-4--Sukufe4-Oval-2" cx="928.720443" cy="212.427746" rx="112.273733" ry="69.3641618"></ellipse>
+                    <ellipse id="sukufe-4--Sukufe4-Oval" cx="56.6292953" cy="212.427746" rx="56.6292953" ry="212.427746"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

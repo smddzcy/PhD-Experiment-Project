@@ -1,0 +1,35 @@
+<svg viewBox="0 0 2000 1500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="muserref-2--Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="muserref-2--muserref-2">
+            <g id="muserref-2--Leg-Top" transform="translate(870.389884, 0.000000)" fill="#4A4A4A">
+                <g id="muserref-2--Leg-Top-2" transform="translate(335.089568, 0.000000)">
+                    <polygon id="muserref-2--Rectangle-Leg" points="94.8366702 582.761578 1.00753611 582.763805 0 1.78486787 94.8366702 0"></polygon>
+                </g>
+                <g id="muserref-2--Leg-Top-1">
+                    <polygon id="muserref-2--Rectangle-Leg" points="94.8366702 582.761578 1.00753611 582.763805 0 1.78486787 94.8366702 0"></polygon>
+                </g>
+            </g>
+            <g id="muserref-2--Leg-Bottom" transform="translate(870.389884, 916.907514)" fill="#4A4A4A">
+                <g id="muserref-2--Leg-Bottom-2" transform="translate(335.089568, 0.000000)">
+                    <polygon id="muserref-2--Rectangle-Leg" points="94.8366702 582.761578 1.00753611 582.763805 0 1.78486787 94.8366702 0"></polygon>
+                </g>
+                <g id="muserref-2--Leg-Bottom-1">
+                    <polygon id="muserref-2--Rectangle-Leg" points="94.8366702 582.761578 1.00753611 582.763805 0 1.78486787 94.8366702 0"></polygon>
+                </g>
+            </g>
+            <g class="Body" transform="translate(190.727081, 334.898844)">
+                <path d="M443.808571,623.003061 C443.808571,623.003061 1.59385592e-14,542.802314 0,418.347836 C0,293.893358 443.808571,213.690435 443.808571,213.690435 C443.808571,213.690435 634.301812,1.62804579e-14 925.364258,0 C1216.4267,0 1364.01954,213.690435 1364.01954,213.690435 C1364.01954,213.690435 1806.84265,293.232307 1808.28883,418.346748 C1809.73502,543.461189 1369.78234,628.674482 1369.78234,628.674482 C1369.78234,628.674482 1184.44867,830.202312 925.364258,830.202312 C666.279842,830.202312 443.808571,623.003061 443.808571,623.003061 Z" id="muserref-2--Body-1" fill="#F6A623"></path>
+                <g id="muserref-2--Body-Stuff" transform="translate(569.020021, 202.673410)" fill="#EF001D">
+                    <ellipse id="muserref-2--Oval-2" cx="993.677555" cy="212.427746" rx="120.126449" ry="69.3641618"></ellipse>
+                    <ellipse id="muserref-2--Oval" cx="60.5900948" cy="212.427746" rx="60.5900948" ry="212.427746"></ellipse>
+                </g>
+            </g>
+            <g id="muserref-2--Head-4" transform="translate(233.333333, 750.000000) scale(-1, 1) translate(-233.333333, -750.000000) translate(0.000000, 426.099495)">
+                <path d="M229.79798,647.801009 C356.7119,647.801009 466.329351,398.006151 466.329351,323.900505 C466.329351,249.794858 356.7119,0 229.79798,0 C102.88406,0 0,145.015195 0,323.900505 C0,502.785814 102.88406,647.801009 229.79798,647.801009 Z" id="muserref-2--Oval" fill="#EF001D"></path>
+                <ellipse id="muserref-2--Oval-2" fill="#F8E81C" cx="233.333333" cy="173.035328" rx="40.4040404" ry="43.258832"></ellipse>
+                <ellipse id="muserref-2--Oval-2" fill="#F8E81C" cx="233.333333" cy="474.765681" rx="40.4040404" ry="43.258832"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>
