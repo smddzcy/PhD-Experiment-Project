@@ -166,7 +166,6 @@
         $interval(function(){
           $timeout(function(){
             $scope.$apply(function(){
-              console.log("wow");
               this.logs = getData();
 
               var logsCsv = []
@@ -198,7 +197,7 @@
         };
 
         this.now = function() {
-          return Date.now();
+          return Date.now() / 1000 | 0;
         };
 
         this.clearData = function(time) {

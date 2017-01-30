@@ -529,7 +529,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
 
     # Initialize the local storage store if it's the first answer
     if @firstInit
-      @localStorageKey = Date.now()
+      @localStorageKey = (Date.now() / 1000) | 0
       data = JSON.parse localStorage._expData
       data[@localStorageKey] = []
       localStorage._expData = JSON.stringify data
@@ -538,7 +538,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
 
     if @currentEls.bugNumber is $index
       log @localStorageKey, {
-        time: Date.now()
+        time: (Date.now() / 1000) | 0
         correct: true
         selectedAnswer: @questionOptions[$index]
         correctAnswer: @questionOptions[@currentEls.bugNumber]
@@ -554,7 +554,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
       $timeout (-> init()), Constants.ANSWER_TIMEOUT
     else
       log @localStorageKey, {
-        time: Date.now()
+        time: (Date.now() / 1000) | 0
         correct: false
         selectedAnswer: @questionOptions[$index]
         correctAnswer: @questionOptions[@currentEls.bugNumber]
