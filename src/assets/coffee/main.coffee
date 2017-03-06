@@ -127,6 +127,8 @@ BugService = ($compile, $rootScope, Constants) ->
 
   bugNumber = 0 # Current bug number
 
+  indirectMotionCount = 0
+
   Bug =
     getNextElements: ->
       # Shuffle the bugs on each block (each 16 trials)
@@ -224,6 +226,8 @@ BugService = ($compile, $rootScope, Constants) ->
                   transform: 'translate(-250%, -250%) rotate(45deg)'
                   top: '100%', left: '100%'
 
+              isIndirect = true
+
         when 1 # Top right
           switch [0...3].random()
             # Horizontal, to top left
@@ -275,6 +279,8 @@ BugService = ($compile, $rootScope, Constants) ->
                 movingBug.css
                   transform: 'translate(100%, -250%) rotate(135deg)'
                   top: '100%', left: 0
+
+              isIndirect = true
 
         when 2 # Bottom left
           switch [0...3].random()
@@ -329,6 +335,8 @@ BugService = ($compile, $rootScope, Constants) ->
                   transform: 'translate(-200%, 150%) rotate(-45deg)'
                   top: 0, left: '100%'
 
+              isIndirect = true
+
         else # Bottom right
           switch [0...3].random()
             # Horizontal, to bottom left
@@ -382,7 +390,10 @@ BugService = ($compile, $rootScope, Constants) ->
                   transform: 'translate(100%, 100%) rotate(-135deg)'
                   top: 0, left: 0
 
+              isIndirect = true
+
       bgItem.css bgItemPositions[possibleBgItemPos[[0..1].random()]]
+      if isIndirect then Math.random() > 0.5 else false
 
     normalizeVector: (vect, multFactor = 1) ->
       magnitude = Math.sqrt(vect.top * vect.top + vect.left * vect.left)
@@ -447,6 +458,30 @@ BugService = ($compile, $rootScope, Constants) ->
       movingBugPos = movingBug.offset()
       movingBug.offset (@sumVectors movingBugPos, movementVector)
 
+    getIndirectMovementVector: (movingBug, stationaryBug, away = false) ->
+      movementVector = @getMovementVector movingBug, stationaryBug, away
+      indirectMotionCount = (indirectMotionCount + 1) % 140
+
+      x = Math.sqrt(2) / 2
+      if indirectMotionCount > 70
+        return {
+          top: movementVector.top * x - movementVector.left * x
+          left: (movementVector.top + movementVector.left) * x
+        }
+      else
+        return {
+          top: (movementVector.top + movementVector.left) * x
+          left: -movementVector.top * x +  movementVector.left * x
+        }
+
+      movementVector
+
+    moveBugIndirect: (movingBug, stationaryBug, away = false) ->
+      @staticStationaryBug ?= stationaryBug
+      movementVector = @getIndirectMovementVector(movingBug, @staticStationaryBug, away)
+      movingBugPos = movingBug.offset()
+      movingBug.offset (@sumVectors movingBugPos, movementVector)
+
   Bug
 
 Constants =
@@ -471,17 +506,26 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
   @isMovementFinished = false
   @firstInit = true
 
-  startMovement = =>
+  startMovement = (isMovementIndirect) =>
     b1 = @movingBug.find('.Body')
     b2 = @stationaryBug.find('.Body')
 
-    @movement = $interval =>
-      if BugService.intersects(b1, b2) or BugService.isOffScreen(@movingBug)
-        stopMovement()
+    if isMovementIndirect
+      @movement = $interval =>
+        if BugService.intersects(b1, b2) or BugService.isOffScreen(@movingBug)
+          stopMovement()
 
-      $timeout =>
-        BugService.moveBug @movingBug, @stationaryBug, @isBugMovingAway
-    , 1.0 / Constants.FPS * 1000
+        $timeout =>
+          BugService.moveBugIndirect @movingBug, @stationaryBug, @isBugMovingAway
+      , 1.0 / Constants.FPS * 1000
+    else
+      @movement = $interval =>
+        if BugService.intersects(b1, b2) or BugService.isOffScreen(@movingBug)
+          stopMovement()
+
+        $timeout =>
+          BugService.moveBug @movingBug, @stationaryBug, @isBugMovingAway
+      , 1.0 / Constants.FPS * 1000
 
     @movement.catch (err) -> return
 
@@ -513,8 +557,8 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
     @bgItem.append @currentEls.bgItem
 
     $timeout =>
-      BugService.setInitialPositions(@movingBug, @stationaryBug, @bgItem, @isBugMovingAway)
-      startMovement()
+      isIndirect = BugService.setInitialPositions(@movingBug, @stationaryBug, @bgItem, @isBugMovingAway)
+      startMovement isIndirect
 
   log = (key, val) ->
     data = JSON.parse localStorage._expData
