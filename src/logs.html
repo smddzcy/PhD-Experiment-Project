@@ -107,7 +107,7 @@
              ng-click="vm.clearData(time)">X</div>
         <div class="head-row">
           <div class="head-infos">
-            <div>Start Time: <strong>{{ ::time | date:'yyyy-MM-dd HH:mm:ss Z' }}</strong></div>
+            <div>Start Time: <strong>{{ ::(time * 1000) | date:'yyyy-MM-dd HH:mm:ss Z' }}</strong></div>
             <div>Correct Answers: <strong>{{ vm.getCorrectAnswerCount(answers) }}</strong></div>
             <div>Percentage: <strong>{{ vm.getCorrectAnswerCount(answers) / answers.length * 100.0 }}%</strong></div>
           </div>
