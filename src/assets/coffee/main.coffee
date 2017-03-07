@@ -506,40 +506,41 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
   @isMovementFinished = false
   @firstInit = true
 
-  startMovement = (isMovementIndirect) =>
+  @startMovement = (isMovementIndirect) =>
     b1 = @movingBug.find('.Body')
     b2 = @stationaryBug.find('.Body')
 
     if isMovementIndirect
       @movement = $interval =>
-        if BugService.intersects(b1, b2) or BugService.isOffScreen(@movingBug)
-          stopMovement()
+        if BugService.intersects(b1, b2) or (@isBugMovingAway and BugService.isOffScreen(@movingBug))
+          @stopMovement()
 
         $timeout =>
           BugService.moveBugIndirect @movingBug, @stationaryBug, @isBugMovingAway
       , 1.0 / Constants.FPS * 1000
     else
       @movement = $interval =>
-        if BugService.intersects(b1, b2) or BugService.isOffScreen(@movingBug)
-          stopMovement()
+        if BugService.intersects(b1, b2) or (@isBugMovingAway and BugService.isOffScreen(@movingBug))
+          @stopMovement()
 
         $timeout =>
           BugService.moveBug @movingBug, @stationaryBug, @isBugMovingAway
       , 1.0 / Constants.FPS * 1000
 
-    @movement.catch (err) -> return
+    @movement.catch angular.noop
 
-  stopMovement = =>
+  @stopMovement = =>
     $interval.cancel(@movement)
     @movingBug.find('[id*=Leg] *').css('animation-play-state', 'paused')
     @isMovementFinished = true
 
-  init = () =>
+  @init = () =>
     # Currenly, only 1 block.
-    if BugService.getTrialNumber() is 16
+    if BugService.getTrialNumber() is 32
       $('#main-wrapper').hide()
       return
 
+    @pathBasedAnswer = BugService.getTrialNumber() > 15
     @isMovementFinished = false
     @isBugMovingAway = Math.random() < 0.5
 
@@ -557,17 +558,24 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
     @bgItem.append @currentEls.bgItem
 
     $timeout =>
-      isIndirect = BugService.setInitialPositions(@movingBug, @stationaryBug, @bgItem, @isBugMovingAway)
-      startMovement isIndirect
+      @isIndirect = BugService.setInitialPositions(@movingBug, @stationaryBug, @bgItem, @isBugMovingAway)
+      @startMovement @isIndirect
 
-  log = (key, val) ->
+  @log = (key, val) =>
     data = JSON.parse localStorage._expData
     data[key].push val
     localStorage._expData = JSON.stringify data
 
+  @isAnswerCorrect = ($index) =>
+    if @pathBasedAnswer
+      # 0 => Directly Forward, 1 => Directly Away, 2 => Indirectly Forward, 3 => Indirectly Away
+      ((@isIndirect << 1) | @isBugMovingAway) is $index
+    else
+      @currentEls.bugNumber is $index
+
   @onAnswerSelected = ($index) =>
     $('body').css 'pointer-events', 'none'
-    setTimeout ->
+    $timeout ->
       $('body').css 'pointer-events', 'all'
     , Constants.ANSWER_TIMEOUT
 
@@ -580,8 +588,8 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
 
       @firstInit = false
 
-    if @currentEls.bugNumber is $index
-      log @localStorageKey, {
+    if @isAnswerCorrect $index
+      @log @localStorageKey, {
         time: (Date.now() / 1000) | 0
         correct: true
         selectedAnswer: @questionOptions[$index]
@@ -595,9 +603,9 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
         showConfirmButton: false
 
       @correctAnswerCount++
-      $timeout (-> init()), Constants.ANSWER_TIMEOUT
+      $timeout (=> @init()), Constants.ANSWER_TIMEOUT
     else
-      log @localStorageKey, {
+      @log @localStorageKey, {
         time: (Date.now() / 1000) | 0
         correct: false
         selectedAnswer: @questionOptions[$index]
@@ -611,9 +619,9 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
         showConfirmButton: false
 
       @wrongAnswerCount++
-      $timeout (-> init()), Constants.ANSWER_TIMEOUT
+      $timeout (=> @init()), Constants.ANSWER_TIMEOUT
 
-  init()
+  @init()
 
   @
 
