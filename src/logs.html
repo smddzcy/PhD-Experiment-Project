@@ -130,6 +130,7 @@
               <th>Trial Number</th>
               <th>Selected Answer</th>
               <th>Correct Answer</th>
+              <th>Path / Manner</th>
               <th>Correct</th>
             </tr>
           </thead>
@@ -139,6 +140,7 @@
               <td>{{ ::$index+1 }}</td>
               <td>{{ ::answer.selectedAnswer }}</td>
               <td>{{ ::answer.correctAnswer }}</td>
+              <td>{{ ::answer.pathBased ? 'path' : 'manner' }}</td>
               <td class="answer-correctness-col"
                   ng-class="{ correct: answer.correct }">{{ ::(answer.correct ? '✔︎' : '✗') }}</td>
             </tr>
@@ -162,6 +164,7 @@
         };
 
         this.logs = getData();
+        window.l = this.logs;
 
         $interval(function(){
           $timeout(function(){

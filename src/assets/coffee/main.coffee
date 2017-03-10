@@ -540,7 +540,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
       $('#main-wrapper').hide()
       return
 
-    @pathBasedAnswer = BugService.getTrialNumber() > 15
+    @pathBasedAnswer = $('body').attr('path-based')?
     @isMovementFinished = false
     @isBugMovingAway = Math.random() < 0.5
 
@@ -594,6 +594,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
         correct: true
         selectedAnswer: @questionOptions[$index]
         correctAnswer: @questionOptions[@currentEls.bugNumber]
+        pathBased: @pathBasedAnswer
       }
 
       swal
@@ -610,6 +611,7 @@ MainController = ($scope, $interval, $timeout, Constants, BugService) ->
         correct: false
         selectedAnswer: @questionOptions[$index]
         correctAnswer: @questionOptions[@currentEls.bugNumber]
+        pathBased: @pathBasedAnswer
       }
 
       swal
