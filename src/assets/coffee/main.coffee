@@ -226,7 +226,7 @@ BugService = ($compile, $rootScope, Constants) ->
                   transform: 'translate(-250%, -250%) rotate(45deg)'
                   top: '100%', left: '100%'
 
-              isIndirect = true
+              canBeIndirect = true
 
         when 1 # Top right
           switch [0...3].random()
@@ -280,7 +280,7 @@ BugService = ($compile, $rootScope, Constants) ->
                   transform: 'translate(100%, -250%) rotate(135deg)'
                   top: '100%', left: 0
 
-              isIndirect = true
+              canBeIndirect = true
 
         when 2 # Bottom left
           switch [0...3].random()
@@ -335,7 +335,7 @@ BugService = ($compile, $rootScope, Constants) ->
                   transform: 'translate(-200%, 150%) rotate(-45deg)'
                   top: 0, left: '100%'
 
-              isIndirect = true
+              canBeIndirect = true
 
         else # Bottom right
           switch [0...3].random()
@@ -390,10 +390,10 @@ BugService = ($compile, $rootScope, Constants) ->
                   transform: 'translate(100%, 100%) rotate(-135deg)'
                   top: 0, left: 0
 
-              isIndirect = true
+              canBeIndirect = true
 
       bgItem.css bgItemPositions[possibleBgItemPos[[0..1].random()]]
-      if isIndirect then Math.random() > 0.5 else false
+      if canBeIndirect then Math.random() > 0.60 else false
 
     normalizeVector: (vect, multFactor = 1) ->
       magnitude = Math.sqrt(vect.top * vect.top + vect.left * vect.left)
