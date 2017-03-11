@@ -128,6 +128,7 @@ BugService = ($compile, $rootScope, Constants) ->
   bugNumber = 0 # Current bug number
 
   indirectMotionCount = 0
+  indirectMotionFreq = 140
 
   Bug =
     getNextElements: ->
@@ -393,7 +394,8 @@ BugService = ($compile, $rootScope, Constants) ->
               canBeIndirect = true
 
       bgItem.css bgItemPositions[possibleBgItemPos[[0..1].random()]]
-      if canBeIndirect then Math.random() > 0.60 else false
+      # if canBeIndirect then Math.random() > 0.60 else false
+      if canBeIndirect then true
 
     normalizeVector: (vect, multFactor = 1) ->
       magnitude = Math.sqrt(vect.top * vect.top + vect.left * vect.left)
@@ -458,23 +460,52 @@ BugService = ($compile, $rootScope, Constants) ->
       movingBugPos = movingBug.offset()
       movingBug.offset (@sumVectors movingBugPos, movementVector)
 
+    straightenVector: (vector) ->
+      for k, v of vector
+        if (v < 0 && v > -1) || (v > 0 && v < 1)
+          vector[k] = 0
+        else if v < -1
+          vector[k] = -1
+        else if v > 1
+          vector[k] = 1
+      vector
+
     getIndirectMovementVector: (movingBug, stationaryBug, away = false) ->
       movementVector = @getMovementVector movingBug, stationaryBug, away
-      indirectMotionCount = (indirectMotionCount + 1) % 140
+      indirectMotionCount = (indirectMotionCount + 1) % indirectMotionFreq
 
       x = Math.sqrt(2) / 2
-      if indirectMotionCount > 70
-        return {
+      if indirectMotionCount <= indirectMotionFreq / 2
+        @turnBug movingBug, -45
+        movementVector = {
           top: movementVector.top * x - movementVector.left * x
           left: (movementVector.top + movementVector.left) * x
         }
+        movementVector = @straightenVector(movementVector) if away
       else
-        return {
+        @turnBug movingBug, 45
+        movementVector = {
           top: (movementVector.top + movementVector.left) * x
           left: -movementVector.top * x +  movementVector.left * x
         }
+        movementVector = @straightenVector(movementVector) if away
 
       movementVector
+
+    turnBug: (bug, deg) ->
+      style = $(bug).get(0).style
+      getRotation = () ->
+        rot = style["transform"].match(/rotate\((.*)\)/)[1]
+        rot = parseInt(rot.substr(0, rot.length - 3))
+
+      # Calculate the base degree once
+      @baseDeg = getRotation() unless @baseDeg?
+      newDeg = @baseDeg + parseInt(deg)
+      currentDeg = getRotation()
+
+      # Don't make redundant style changes
+      unless currentDeg is newDeg
+        style["transform"] = style["transform"].replace(/rotate\(.*\)/, "rotate(#{newDeg}deg)")
 
     moveBugIndirect: (movingBug, stationaryBug, away = false) ->
       @staticStationaryBug ?= stationaryBug
