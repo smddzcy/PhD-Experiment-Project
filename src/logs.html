@@ -136,7 +136,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="answer in answers track by $index">
-              <td>{{ ::answer.time | date:'yyyy-MM-dd HH:mm:ss Z' }}</td>
+              <td>{{ ::(answer.time * 1000) | date:'yyyy-MM-dd HH:mm:ss Z' }}</td>
               <td>{{ ::$index+1 }}</td>
               <td>{{ ::answer.selectedAnswer }}</td>
               <td>{{ ::answer.correctAnswer }}</td>
